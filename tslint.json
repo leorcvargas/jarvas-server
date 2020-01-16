@@ -1,0 +1,17 @@
+{
+  "extends": [
+      "tslint:recommended",
+      "tslint-config-airbnb",
+      "tslint-config-prettier"
+  ],
+  "rules": {
+      "object-literal-sort-keys": false,
+      "no-shadowed-variable": false,
+      "interface-name": [true, "never-prefix"],
+      "variable-name": [true, "ban-keywords"],
+      "no-empty": [true, "allow-empty-functions"],
+      "import-name": false,
+      "object-shorthand-properties-first": false,
+      "prefer-array-literal": [true, { "allow-type-parameters": true }]
+  }
+}
