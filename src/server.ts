@@ -1,17 +1,21 @@
 import createApp from './app';
 import config from './config';
 
+import loggerFactory from './shared/logger';
+
+const logger = loggerFactory('server');
+
 const startServer = () => {
   const app = createApp();
 
-  app.listen(config.PORT, (err) => {
+  app.listen(config.PORT, err => {
     if (err) {
-      console.error(err);
+      logger.error(err.message);
       process.exit(1);
     }
 
-    console.log(`> Server started on port ${config.PORT}`);
-  })
+    logger.info(`Server started on port ${config.PORT}`);
+  });
 };
 
 startServer();
