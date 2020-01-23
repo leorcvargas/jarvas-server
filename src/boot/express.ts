@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 
-const createExpress = () => {
+const loadExpress = () => {
   const app = express();
 
   app.get('/healthcheck', (req, res) => {
@@ -23,4 +23,4 @@ const createExpress = () => {
 
   return app;
 };
-export default createExpress;
+export default loadExpress;

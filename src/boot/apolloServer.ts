@@ -5,7 +5,7 @@ import path from 'path';
 import { buildSchema } from 'type-graphql';
 import { Container } from 'typedi';
 
-const createApolloServer = async (app: Express) => {
+const loadApolloServer = async (app: Express) => {
   const modules = fs.readdirSync(path.resolve(__dirname, '..', 'modules'));
   const resolvers = modules.map(module => {
     const resolverPath = path.resolve(
@@ -27,4 +27,4 @@ const createApolloServer = async (app: Express) => {
   apollo.applyMiddleware({ app });
 };
 
-export default createApolloServer;
+export default loadApolloServer;
