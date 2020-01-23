@@ -13,5 +13,10 @@
       "import-name": false,
       "object-shorthand-properties-first": false,
       "prefer-array-literal": [true, { "allow-type-parameters": true }]
+  },
+  "linterOptions": {
+    "exclude": [
+      "./seed/**"
+    ]
   }
 }
