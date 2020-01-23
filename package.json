@@ -2,10 +2,12 @@
   "name": "jarvas-server",
   "version": "1.0.0",
   "description": "Jarvas backend server",
-  "main": "index.js",
+  "main": "build/server.js",
   "scripts": {
     "start:dev": "nodemon",
-    "test": "test",
+    "start:prod": "yarn build && node build/server.js",
+    "build": "tsc",
+    "test": "jest",
     "seed:run": "ts-node seed/index.ts"
   },
   "author": "Leonardo Vargas <leocarvalho.vargas@gmail.com>",

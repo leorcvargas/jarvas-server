@@ -11,13 +11,12 @@ const loadDatabase = async () => {
 
     const modules = fs.readdirSync(path.resolve(__dirname, '..', 'modules'));
     const entities = modules.map(module => {
-      const entityPath = path.resolve(
+      const entityPath = `${path.resolve(
         __dirname,
         '..',
         'modules',
         module,
-        'entity.ts',
-      );
+      )}/entity`;
       return require(entityPath).default;
     });
 

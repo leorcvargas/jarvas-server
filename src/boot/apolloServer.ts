@@ -8,13 +8,12 @@ import { Container } from 'typedi';
 const loadApolloServer = async (app: Express) => {
   const modules = fs.readdirSync(path.resolve(__dirname, '..', 'modules'));
   const resolvers = modules.map(module => {
-    const resolverPath = path.resolve(
+    const resolverPath = `${path.resolve(
       __dirname,
       '..',
       'modules',
       module,
-      'resolver.ts',
-    );
+    )}/resolver`;
     return require(resolverPath);
   });
 
