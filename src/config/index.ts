@@ -22,15 +22,16 @@ const getValueFromProcessEnv = (name: string, required = true) => {
   return envVarValue;
 };
 
-const config = {
-  PORT: parseInt(getValueFromProcessEnv('PORT'), 10),
 
+export const getConfig = () => ({
+  PORT: parseInt(getValueFromProcessEnv('PORT'), 10),
+  
   DB_HOST: getValueFromProcessEnv('DB_HOST'),
   DB_PORT: parseInt(getValueFromProcessEnv('DB_PORT'), 10),
   DB_NAME: getValueFromProcessEnv('DB_NAME'),
   DB_USERNAME: getValueFromProcessEnv('DB_USERNAME'),
   DB_PASSWORD: getValueFromProcessEnv('DB_PASSWORD'),
   DB_SYNC: !!getValueFromProcessEnv('DB_SYNC', false),
-};
+});
 
-export default config;
+export type Config = ReturnType<typeof getConfig>;

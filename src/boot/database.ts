@@ -3,7 +3,7 @@ import path from 'path';
 import Container from 'typedi';
 import * as TypeORM from 'typeorm';
 
-import config from '../config';
+import { Config } from '../config';
 
 const loadDatabase = async () => {
   TypeORM.useContainer(Container);
@@ -19,6 +19,8 @@ const loadDatabase = async () => {
     );
     return require(entityPath).default;
   });
+
+  const config = Container.get<Config>('app.config');
 
   await TypeORM.createConnection({
     type: 'postgres',
