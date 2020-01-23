@@ -1,11 +1,14 @@
+import 'reflect-metadata';
+
 import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import { buildSchema } from 'type-graphql';
 
-import typeDefs from './typeDefs';
+import UserResolver from './modules/user/resolver';
 
-const createApp = () => {
+const createApp = async () => {
   const app = express();
 
   app.get('/healthcheck', (req, res) => {
@@ -25,7 +28,7 @@ const createApp = () => {
   });
 
   const apollo = new ApolloServer({
-    typeDefs,
+    schema: await buildSchema({ resolvers: [UserResolver] }),
   });
   apollo.applyMiddleware({ app });
 

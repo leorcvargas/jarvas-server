@@ -5,8 +5,8 @@ import loggerFactory from './shared/logger';
 
 const logger = loggerFactory('server');
 
-const startServer = () => {
-  const app = createApp();
+const startServer = async () => {
+  const app = await createApp();
 
   app.listen(config.PORT, err => {
     if (err) {
