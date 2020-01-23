@@ -33,6 +33,7 @@
     "ts-assert-exists": "^1.0.5",
     "type-graphql": "^0.17.6",
     "typedi": "^0.8.0",
+    "typeorm": "^0.2.22",
     "winston": "^3.2.1"
   }
 }
