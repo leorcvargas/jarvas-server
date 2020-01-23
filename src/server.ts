@@ -1,6 +1,7 @@
+import 'reflect-metadata';
+
 import createApp from './app';
 import config from './config';
-
 import loggerFactory from './shared/logger';
 
 const logger = loggerFactory('server');

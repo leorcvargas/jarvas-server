@@ -1,12 +1,11 @@
-import 'reflect-metadata';
-
 import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import { buildSchema } from 'type-graphql';
+import Container from 'typedi';
 
-import UserResolver from './modules/user/resolver';
+import { UserResolver } from './modules/user/resolver';
 
 const createApp = async () => {
   const app = express();
@@ -28,7 +27,10 @@ const createApp = async () => {
   });
 
   const apollo = new ApolloServer({
-    schema: await buildSchema({ resolvers: [UserResolver] }),
+    schema: await buildSchema({
+      resolvers: [UserResolver],
+      container: Container,
+    }),
   });
   apollo.applyMiddleware({ app });
 

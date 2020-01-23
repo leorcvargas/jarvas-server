@@ -1,15 +1,17 @@
 import { Query, Resolver } from 'type-graphql';
 
 import User from './entity';
+import { UserService } from './service';
 
 @Resolver(User)
-export default class UserResolver {
+export class UserResolver {
+  constructor(
+    private readonly userService: UserService,
+  ) {}
+
   @Query(() => [User])
   public listUsers() {
-    const users: User[] = [
-      { id: 1, email: 'leo@dev.com' },
-      { id: 2, email: 'leo+2@dev.com' },
-    ];
+    const users = this.userService.findAll();
 
     return users;
   }
