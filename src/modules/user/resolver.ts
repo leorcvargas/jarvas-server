@@ -4,7 +4,7 @@ import User from './entity';
 import { UserService } from './service';
 
 @Resolver(User)
-export class UserResolver {
+export default class UserResolver {
   constructor(
     private readonly userService: UserService,
   ) {}

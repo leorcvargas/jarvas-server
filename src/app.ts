@@ -5,7 +5,7 @@ import express from 'express';
 import { buildSchema } from 'type-graphql';
 import Container from 'typedi';
 
-import { UserResolver } from './modules/user/resolver';
+import loadResolvers from './loaders/resolvers';
 
 const createApp = async () => {
   const app = express();
@@ -26,14 +26,14 @@ const createApp = async () => {
     res.status(200).send('Hello!');
   });
 
+  
   const apollo = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: loadResolvers(),
       container: Container,
     }),
   });
   apollo.applyMiddleware({ app });
-
   return app;
 };
 
